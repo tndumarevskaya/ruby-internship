@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  cloud_app:
+    build:  # Определяет как собрать Docker образ для сервиса.
+      context: .  # Определяет контекст сборки, в данном случае - текущий каталог.
+      dockerfile: Dockerfile  # Указывает Dockerfile, который будет использован для сборки образа.
+    volumes:
+      - .:/usr/src
+    ports:
+      - "3000:3000"
+
+  price_app:
+    build:
+      context: ./price_app 
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src/price_app
+    ports:
+      - "8080:5678"

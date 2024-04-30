@@ -1,0 +1,29 @@
+version: '3'
+services:
+  cloud_app:
+    build: .
+    volumes: 
+      - .:/usr/src
+    ports:
+      - 3000:3000 
+    depends_on:
+      - db
+
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    ports:
+      - 15672:15672
+    volumes:
+      - rabbit:/var/lib/rabbitmq
+      
+  db:
+    image: postgres:11.5
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres:/var/lib/postgresql/data
+volumes:
+  postgres:
+  rabbit:
+

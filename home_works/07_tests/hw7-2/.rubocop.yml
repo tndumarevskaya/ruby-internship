@@ -1,0 +1,29 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+  - 'config/**/*'
+  - 'spec/rails_helper.rb'
+  
+Style/DocumentationMethod:
+  Enabled: true
+  Exclude:
+    - 'bin/setup'
+
+Metrics/LineLength:
+  Max: 120
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+RSpec/NestedGroups:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude: 
+  - 'Gemfile'
